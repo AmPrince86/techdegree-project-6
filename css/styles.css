@@ -44,6 +44,7 @@ h2 {
 
 button {
   margin: 6px;
+  cursor: pointer;
   border: 1px solid transparent;
   padding: .5rem 1rem;
   color: var(--color-keys);
@@ -53,6 +54,10 @@ button {
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+}
+
+.btn__reset {
+  cursor: pointer;
 }
 
 .main-container {

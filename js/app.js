@@ -1,25 +1,20 @@
 //const words = getElementById('phrase');
-const resetBtn = document.querySelector('.btn__reset');
-phrases = []; // game show phrases go in here
+const startButton = document.querySelector('.btn__reset');
+// game show phrases go in here
+phrases = [
+'The Avengers',
+'Captain America',
+'Iron Man',
+'The Hulk',
+'Black Panther'
+]; 
 const keyboard = document.querySelector('#querty');
 const letter = document.querySelector('.letter');
 const misses = document.querySelector('.misses');
 let missed = 0;
 
-// Listen for the start game button to be pressed
-//startButton.addEventListener('click', e => {
-
-//});
-
-document.getElementById("overlay").addEventListener("click", function () {
- var e =document.getElementsByClassName("start");
-
-        e[0].style.display = 'block';
-   
-})	;
-document.getElementById("banner").addEventListener("click", function () {
-   var e =document.getElementsByClassName("start");
- e[0].style.display= 'none';
+startButton.addEventListener('click', () => {
+    overlay.style.display = 'none';
 });
 
 // check if a letter is in the phrase
