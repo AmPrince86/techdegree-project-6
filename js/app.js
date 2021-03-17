@@ -1,21 +1,36 @@
-//const words = getElementById('phrase');
+const words = document.getElementById('phrase');
 const startButton = document.querySelector('.btn__reset');
+const keyboard = document.querySelector('#querty');
+const letter = document.querySelector('.letter');
+const misses = document.querySelector('.misses');
+let missed = 0;
+
 // game show phrases go in here
-phrases = [
+var phrases = [
 'The Avengers',
 'Captain America',
 'Iron Man',
 'The Hulk',
 'Black Panther'
 ]; 
-const keyboard = document.querySelector('#querty');
-const letter = document.querySelector('.letter');
-const misses = document.querySelector('.misses');
-let missed = 0;
 
 startButton.addEventListener('click', () => {
     overlay.style.display = 'none';
+    let phraseWords = phrases[Math.floor((Math.random() * 5) + 1)];
+    let phraseSplit = phrase.split('');
+    for (let i = 0; i < phraseSplit.length; i++) {
+        $('#phrase ul').append('<li class="letter"></li>');
+    }
 });
+
+// return a random phrase from an array
+// function getRandomPhraseAsArray(phrases) {
+//     let randomValue = phrases[math.floor(math.random() * phrases.length)];
+// }
+
+     
+
+
 
 // check if a letter is in the phrase
 const checkletter = (button) => {
