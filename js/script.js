@@ -1,3 +1,7 @@
+const qwerty = getElementById('qwerty');
+const phrase = getElementById('phrase');
+
+
 const keyboard = document.querySelector('#querty');
 const letter = document.querySelector('.letter');
 const misses = document.querySelector('.misses');
