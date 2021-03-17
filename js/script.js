@@ -1,12 +1,28 @@
-const qwerty = getElementById('qwerty');
-const phrase = getElementById('phrase');
-
-
+//const words = getElementById('phrase');
+const resetBtn = document.querySelector('.btn__reset');
+phrases = []; // game show phrases go in here
 const keyboard = document.querySelector('#querty');
 const letter = document.querySelector('.letter');
 const misses = document.querySelector('.misses');
 let missed = 0;
 
+// Listen for the start game button to be pressed
+//startButton.addEventListener('click', e => {
+
+//});
+
+document.getElementById("overlay").addEventListener("click", function () {
+ var e =document.getElementsByClassName("start");
+
+        e[0].style.display = 'block';
+   
+})	;
+document.getElementById("banner").addEventListener("click", function () {
+   var e =document.getElementsByClassName("start");
+ e[0].style.display= 'none';
+});
+
+// check if a letter is in the phrase
 const checkletter = (button) => {
     let matched = null;
     
@@ -31,5 +47,9 @@ keyboard.addEventListener('click', (event) => {
             misses.textContent = missed;
         }
         //checkWin() function call goes here
+        const checkWin = () => {
+
+        }
     }    
 });
+
