@@ -7,7 +7,7 @@ const misses = document.querySelector('.misses');
 let missed = 0;
 
 // game show phrases go in here
-let phraseList = [
+let phrases = [
 'The Avengers',
 'Captain America',
 'Iron Man',
@@ -26,18 +26,21 @@ $('.btn__start').on('click', function() {
 // #5 return a random phrase from an array
 $('.btn__start').on('click', function() {
     $('#banner', '#phrase', '#qwerty', '#scoreboard').css('display', 'inital');
-    let phrase = phraseList[Math.floor((Math.random() * 5) + 1)];
-    let phraseSplit = phrase.split('');
+    let phrase = phrases[Math.floor((Math.random() * 5) + 1)];
+    let phraseSplit = phrase.split(" ");
     console.log(phraseSplit);
-    
     for(let i =0; i < phrase.length; i++) {
-        if (phraseList[i] === " ") {
-            $('#phrase ul').append('<li class="space"> </li>');
+        if (phrases[i] === " ") {
+            $('#phrase ul').append('<li class="space"></li>');
         } else {
             $('#phrase ul').append('<li class="letter"></li>');
         }
     } 
 });
+
+
+
+
 
 //adds the letters of a string to the display
 // const addPhraseToDisplay = arr => {
