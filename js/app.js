@@ -1,5 +1,5 @@
-const words = document.getElementById('phrase');
-const startButton = document.querySelector('.btn__reset');
+//const $words = document.getElementById('phrase');
+const $startButton = document.querySelector('.btn__reset');
 
 const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
@@ -7,7 +7,7 @@ const misses = document.querySelector('.misses');
 let missed = 0;
 
 // game show phrases go in here
-var phrases = [
+let phraseList = [
 'The Avengers',
 'Captain America',
 'Iron Man',
@@ -15,23 +15,37 @@ var phrases = [
 'Black Panther'
 ]; 
 
-startButton.addEventListener('click', () => {
-    overlay.style.display = 'none';
+//Hide the li
+//$('#phrase li').hide();
+
+// #3 click button show keyboard
+$('.btn__start').on('click', function() {
+    $('#overlay').css('display', 'none');  
 });
 
-//  let phraseSplit = words.split('');
-//     for (let i = 0; i < wordsSplit.length; i++) {
-//         phrase.append('<li class="letter"></li>');
-//     }
+// #5 return a random phrase from an array
+$('.btn__start').on('click', function() {
+    $('#banner', '#phrase', '#qwerty', '#scoreboard').css('display', 'inital');
+    let phrase = phraseList[Math.floor((Math.random() * 5) + 1)];
+    let phraseSplit = phrase.split('');
+    console.log(phraseSplit);
+    
+    for(let i =0; i < phrase.length; i++) {
+        if (phraseList[i] === " ") {
+            $('#phrase ul').append('<li class="space"> </li>');
+        } else {
+            $('#phrase ul').append('<li class="letter"></li>');
+        }
+    } 
+});
+
+//adds the letters of a string to the display
+// const addPhraseToDisplay = arr => {
+
+// }
 
 
-// return a random phrase from an array
-function getRandomPhraseAsArray(phrases) {
-    let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-}
-
-
-// check if a letter is in the phrase
+// #7 check if a letter is in the phrase
 const checkletter = (button) => {
     let matched = null;
     
@@ -44,7 +58,7 @@ const checkletter = (button) => {
 
     return matched;
 };
-
+ //#8
 keyboard.addEventListener('click', (event) =>  {
     if (event.target.tagName === "BUTTON") {
         event.target.className = 'chosen';
@@ -53,7 +67,7 @@ keyboard.addEventListener('click', (event) =>  {
         if (match === null) {
             missed++;
             // Code to change hear icon from liveHeart.png to lostHeart.png would go here
-            tries.textContent = missed;
+            //tries.textContent = missed;
         }
         //checkWin() function call goes here
         const checkWin = () => {
