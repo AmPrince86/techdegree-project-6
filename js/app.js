@@ -61,17 +61,14 @@ keyboard.addEventListener('click', (event) =>  {
         const match = checkletter(event.target.textContent.toLowerCase());
         if (match === null) {
             missed++;
-            // #9 Code to change heart icon from liveHeart.png to lostHeart.png would go here
+ // #9 Code to change heart icon from liveHeart.png to lostHeart.png would go here
             const lostHeart = 5 - missed;
             const hearts = document.querySelectorAll('img');
             hearts[lostHeart].setAttribute('src', 'images/lostHeart.png')
-        }
-        
+        }    
     }
-});
-
- // #10 checkWin() function call goes here
-    const checkWin = () => {
+// #10 checkWin() function call goes here
+        const checkWin = () => {
         const letterLi = document.querySelectorAll('.letter');
         const showLi = document.querySelectorAll('.show');
         let message = document.querySelector('.title')
@@ -83,7 +80,11 @@ keyboard.addEventListener('click', (event) =>  {
             overLay.className = "lose"; 
             message.textContent = `'YOU LOST'`;
             overLay.style.display = "flex";
+            }
         }
-}
+     
+});
+
+
 
     
