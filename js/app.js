@@ -1,5 +1,5 @@
 // #2 Declare variables
-//const $words = document.getElementById('phrase');
+const overLay = document.getElementById('overlay');
 const startButton = document.querySelector('.btn__reset');
 const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
@@ -34,12 +34,11 @@ let phrases = [
         if (arr[i] === " ") {
             $('#phrase ul').append('<li class="space"></li>');
         } else {
-            $('#phrase ul').append('<li class="letter"></li>');
+            $('#phrase ul').append('<li class="letter">' +arr[i] + '</li>');
         }
     }
  }
          addPhraseToDisplay(randomPhrase);
-
 
 // #7 check if a letter is in the phrase
 const checkletter = (button) => {
@@ -63,13 +62,27 @@ keyboard.addEventListener('click', (event) =>  {
         if (match === null) {
             missed++;
             // #9 Code to change heart icon from liveHeart.png to lostHeart.png would go here
-            let lostHeart = 5 - missed;
-            const heart = document.querySelectorAll('img');
-            heart[lostHeart].setAttribute('src', "images/lostHeart.png")
+            const lostHeart = 5 - missed;
+            const hearts = document.querySelectorAll('img');
+            hearts[lostHeart].setAttribute('src', 'images/lostHeart.png')
         }
-        //checkWin() function call goes here
-        const checkWin = () => {
-
-        }
-    }    
+        
+    }
 });
+
+ // #10 checkWin() function call goes here
+    const checkWin = () => {
+        const letterLi = document.querySelectorAll('.letter');
+        const showLi = document.querySelectorAll('.show');
+        let message = document.querySelector('.title')
+        if (letterLi.length === showLi.length) {
+            overLay.className = "win"; 
+            message.textContent = `'YOU WIN!!'`;
+            overLay.style.display = "flex";
+        } else if (missed >= 5) {
+            overLay.className = "lose"; 
+            message.textContent = `'YOU LOST'`;
+            overLay.style.display = "flex";
+        }
+}
+    
