@@ -1,12 +1,12 @@
+// #2 Declare variables
 //const $words = document.getElementById('phrase');
-const $startButton = document.querySelector('.btn__reset');
-
+const startButton = document.querySelector('.btn__reset');
 const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
 const misses = document.querySelector('.misses');
 let missed = 0;
 
-// game show phrases go in here
+// #4 game show phrases go here
 let phrases = [
 'The Avengers',
 'Captain America',
@@ -15,37 +15,29 @@ let phrases = [
 'Black Panther'
 ]; 
 
-//Hide the li
-//$('#phrase li').hide();
-
-// #3 click button show keyboard
+// #3 click button to hide overlay
 $('.btn__start').on('click', function() {
     $('#overlay').css('display', 'none');  
 });
 
-// #5 return a random phrase from an array
-$('.btn__start').on('click', function() {
-    $('#banner', '#phrase', '#qwerty', '#scoreboard').css('display', 'inital');
-    let phrase = phrases[Math.floor((Math.random() * 5) + 1)];
-    let phraseSplit = phrase.split(" ");
-    console.log(phraseSplit);
-    for(let i =0; i < phrase.length; i++) {
-        if (phrases[i] === " ") {
-            $('#phrase ul').append('<li class="space"></li>');
+//#5 return a random phrase from an array
+ function getRandomPhraseAsArray(arr) {
+    // Get random phrase from array
+    return phrases[Math.floor(Math.random() * arr.length)].split('');
+}
+console.log(getRandomPhraseAsArray(phrases));
+
+//#6 adds the letters of a string to the display
+ function addPhraseToDisplay (arr)  {
+      for(let i =0; i < arr.length; i++) {
+        //append empty li to ul
+        if (arr[i] === " ") {
+            $ul.append('<li class="space"></li>');
         } else {
-            $('#phrase ul').append('<li class="letter"></li>');
+            $ul.append('<li class="letter"></li>');
         }
-    } 
-});
-
-
-
-
-
-//adds the letters of a string to the display
-// const addPhraseToDisplay = arr => {
-
-// }
+    }
+ }
 
 
 // #7 check if a letter is in the phrase
@@ -61,7 +53,7 @@ const checkletter = (button) => {
 
     return matched;
 };
- //#8
+ //#8 Add an event listener to the
 keyboard.addEventListener('click', (event) =>  {
     if (event.target.tagName === "BUTTON") {
         event.target.className = 'chosen';
@@ -78,4 +70,3 @@ keyboard.addEventListener('click', (event) =>  {
         }
     }    
 });
-
