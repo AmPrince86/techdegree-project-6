@@ -53,9 +53,7 @@ const checkletter = (button) => {
     }
     return matched;
 };
-
-
-
+ 
  //#8 Add an event listener to the keyboard
 keyboard.addEventListener('click', (event) =>  {
     if (event.target.tagName === "BUTTON") {
