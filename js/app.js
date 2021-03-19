@@ -25,17 +25,18 @@ $('.btn__start').on('click', function() {
     // Get random phrase from array
     return phrases[Math.floor(Math.random() * arr.length)].split('');
 }
-console.log(getRandomPhraseAsArray(phrases));
+   randomPhrase = getRandomPhraseAsArray(phrases);
 
 //#6 adds the letters of a string to the display
  function addPhraseToDisplay (arr)  {
       for(let i =0; i < arr.length; i++) {
         //append empty li to ul
         if (arr[i] === " ") {
-            $ul.append('<li class="space"></li>');
+            $('#phrase ul').append('<li class="space"></li>');
         } else {
-            $ul.append('<li class="letter"></li>');
+            $('#phrase ul').append('<li class="letter"></li>');
         }
+        return addPhraseToDisplay(phrases);
     }
  }
 
