@@ -47,6 +47,8 @@ const checkletter = (button) => {
     for (i = 0; i < letterPhrase.length; i++) {
         if (button === letterPhrase[i].textContent.toLowerCase()) {
             letterPhrase[i].classList.add('show');
+            letterPhrase[i].style.transition = '1s';
+            letterPhrase[i].style.color = 'white';
             matched = true;
         }
     }
@@ -65,26 +67,34 @@ keyboard.addEventListener('click', (event) =>  {
             const lostHeart = 5 - missed;
             const hearts = document.querySelectorAll('img');
             hearts[lostHeart].setAttribute('src', 'images/lostHeart.png')
-        }    
-    }
-// #10 checkWin() function call goes here
-        const checkWin = () => {
-        const letterLi = document.querySelectorAll('.letter');
-        const showLi = document.querySelectorAll('.show');
-        let message = document.querySelector('.title')
-        if (letterLi.length === showLi.length) {
-            overLay.className = "win"; 
-            message.textContent = `'YOU WIN!!'`;
-            overLay.style.display = "flex";
-        } else if (missed >= 5) {
-            overLay.className = "lose"; 
-            message.textContent = `'YOU LOST'`;
-            overLay.style.display = "flex";
-            }
-        }
-     
-});
+        }   
+        checkWin()
+    } 
 
+// #10 checkWin() function call goes here
+    function checkWin () {
+        const letter = document.querySelectorAll('.letter');
+        const show = document.querySelectorAll('.show');
+        let message = document.querySelector('.title')
+        if (letter.length === show.length) {
+            overLay.className = "win"; 
+            message.textContent = `YOU WIN!!`;
+            overLay.style.display = "flex";
+        } else if (missed > 4) {
+            overLay.className = "lose"; 
+            message.textContent = `YOU LOST :-(`;
+            overLay.style.display = "flex";
+            } 
+        }
+        reset ();
+});
+ function reset () {
+                startButton.textContent = 'Play Again';
+                startButton.addEventListener('click', ()=> {
+                    location.reload();
+                    startButton.style.transition = '5s';
+                });
+            }
 
 
     
